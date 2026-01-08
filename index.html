@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" href="https://static.wixstatic.com/media/1f17f3_faf8f8e2f6fc4776b301d807c7ff80e6~mv2.png" />
@@ -8,39 +8,90 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400&family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;0,800;1,500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,500&display=swap" rel="stylesheet">
     <script>
       tailwind.config = {
         theme: {
           extend: {
             colors: {
               up: {
-                primary: '#0A1F2E',    // Azul Escuro Profundo
-                secondary: '#0E2F3D',  // Azul Médio (Degradê)
-                green: '#1F3B2E',      // Verde Escuro Elegante
-                neutral: '#2C3E50',    // Neutro Moderno
-                offWhite: '#F5F5F5',   // Neutro Claro
-                gold: '#C49B66',       // Dourado Sofisticado
-                goldDark: '#A37F4F',   // Dourado Escuro (Hover)
+                primary: '#050F15',    // Preto Azulado Profundo
+                secondary: '#0B1A26',  // Azul Noturno
+                surface: '#121F2B',    // Superfície
+                green: '#153326',      // Verde Floresta
+                neutral: '#8899A6',    // Cinza Azulado
+                offWhite: '#FAFAFA',   // Fundo Claro
+                gold: '#D4AF37',       // Dourado Principal
+                goldDark: '#AA8C2C',   // Dourado Escuro
               }
             },
             fontFamily: {
-              sans: ['Montserrat', 'Lato', 'sans-serif'],
+              sans: ['Lato', 'sans-serif'],
               heading: ['Montserrat', 'sans-serif'],
             },
+            boxShadow: {
+              'glow': '0 0 20px rgba(212, 175, 55, 0.15)',
+              'card': '0 10px 30px -10px rgba(0, 0, 0, 0.05)',
+            },
             animation: {
-              'heartbeat': 'heartbeat 2.5s ease-in-out infinite',
+              'float': 'float 6s ease-in-out infinite',
+              'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
             },
             keyframes: {
-              heartbeat: {
-                '0%, 100%': { transform: 'scale(1)' },
-                '50%': { transform: 'scale(1.05)' },
+              float: {
+                '0%, 100%': { transform: 'translateY(0)' },
+                '50%': { transform: 'translateY(-10px)' },
               }
             }
           }
         }
       }
     </script>
+    <style>
+      /* Smooth Scrolling & Selection */
+      html {
+        scroll-behavior: smooth;
+      }
+      ::selection {
+        background: #D4AF37;
+        color: #050F15;
+      }
+      
+      /* Scrollbar Customization */
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #050F15;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #121F2B;
+        border-radius: 4px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #D4AF37;
+      }
+
+      /* Animation Utilities */
+      .reveal {
+        opacity: 0;
+        transform: translateY(40px);
+        transition: all 1s cubic-bezier(0.2, 0.8, 0.2, 1);
+      }
+      .reveal.active {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      
+      /* Hide scrollbar for internal elements */
+      .no-scrollbar::-webkit-scrollbar {
+        display: none;
+      }
+      .no-scrollbar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+    </style>
   <script type="importmap">
 {
   "imports": {
@@ -53,7 +104,7 @@
 </script>
 <link rel="stylesheet" href="/index.css">
 </head>
-  <body>
+  <body class="bg-up-offWhite overflow-x-hidden text-up-primary">
     <div id="root"></div>
   <script type="module" src="/index.tsx"></script>
 </body>
